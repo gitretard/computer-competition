@@ -65,6 +65,6 @@ function makeobject(img,x,y,w,h)
 
 	end
 end
-function objmarkup(dt)
+function objmarkup()
 	makeobject(platform.img,400,400,128,32)
 end
