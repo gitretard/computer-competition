@@ -1,3 +1,6 @@
+require("objectphysics")
+require("player")
+
 platform = {}
 player = {}
 
@@ -45,7 +48,7 @@ function playerstuff(dt)
 		player.y = player.y + player.y_velocity * dt
 		player.y_velocity = player.y_velocity - gravity * dt
 	end
-	globaldt = dt
+	gdt = dt
 end
 function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
     return x1 < x2+w2 and
@@ -58,7 +61,7 @@ function makeobject(img,x,y,w,h)
 	if (CheckCollision(player.x,player.y,32,32 ,x,y,w,h)) then
 			player.groundchk = true
 			player.y_velocity = 0
-			player.y = player.y 
+			player.y = player.y - 2 * gdt
 
 	end
 end
