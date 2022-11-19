@@ -1,6 +1,6 @@
-require("objectphysics")
-require("player")
-
+--require("objectphysics")
+--require("player")
+-- dont need thse
 platform = {}
 player = {}
 
