@@ -17,14 +17,15 @@ function love.load()
 
 	player.jump_height = -400
 	gravity = -600
-	player.terminal_velocity = 400
+	player.jumpc = 0
+	player.jumpm = 2
 end
 function love.update(dt)
 	playerstuff(dt)
 end
 function love.draw()
 	love.graphics.draw(player.img,player.x,player.y)
-	objmarkup(dt)
+	objmarkup()
 	love.graphics.print(player.y)
 end
 function playerstuff(dt)
@@ -73,7 +74,6 @@ end
 function objmarkup()
 	
 	makeobject(platform.img,400,400,128,32)
-	makeobject(platform.img,300,500,128,32)
-	makeobject(platform.img,200,550,128,32)
 	
 end
+-- Somthing is wrong with jumping it isnt supposed to be like this
