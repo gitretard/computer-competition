@@ -1,6 +1,3 @@
---require("objectphysics")
---require("player")
--- dont need thse
 platform = {}
 player = {}
 
@@ -18,8 +15,9 @@ function love.load()
 	
 	player.y_velocity = 0
 
-	player.jump_height = -300
+	player.jump_height = -400
 	gravity = -600
+	player.terminal_velocity = 400
 end
 function love.update(dt)
 	playerstuff(dt)
@@ -57,14 +55,25 @@ function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
            y2 < y1+h1
 end
 function makeobject(img,x,y,w,h)
+	
 	love.graphics.draw(img,x,y)
 	if (CheckCollision(player.x,player.y,32,32 ,x,y,w,h)) then
 			player.groundchk = true
 			player.y_velocity = 0
-			player.y = player.y - 2 * gdt
-
-	end
+			player.y = player.y
+			if player.y < y and player.y > x - h then
+				player.y = y - 32
+				player.groundchk = true
+			end
+		else 
+			player.groundchk = false
+	
+end
 end
 function objmarkup()
+	
 	makeobject(platform.img,400,400,128,32)
+	makeobject(platform.img,300,500,128,32)
+	makeobject(platform.img,200,550,128,32)
+	
 end
